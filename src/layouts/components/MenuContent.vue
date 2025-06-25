@@ -45,6 +45,7 @@ const active = computed(() => getActive());
 
 const { locale } = useLocale();
 const list = computed(() => {
+  console.log('navData', navData);
   return getMenuList(navData);
 });
 
@@ -70,7 +71,6 @@ const getMenuList = (list: MenuRoute[], basePath?: string): ListItemType[] => {
   return list
     .map((item) => {
       const path = basePath && !item.path.includes(basePath) ? `${basePath}/${item.path}` : item.path;
-
       return {
         path,
         title: item.meta?.title,

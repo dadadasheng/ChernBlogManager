@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 
 import type { RouteItem } from '@/api/model/permissionModel';
 import { getMenuList } from '@/api/permission';
-import router, { fixedRouterList, homepageRouterList } from '@/router';
+import router, { homepageRouterList } from '@/router';
 import { store } from '@/store';
 import { transformObjectToRoute } from '@/utils/route';
 
@@ -18,10 +18,10 @@ export const usePermissionStore = defineStore('permission', {
     async initRoutes() {
       const accessedRouters = this.asyncRoutes;
 
-      // 在菜单展示全部路由
-      this.routers = [...homepageRouterList, ...accessedRouters, ...fixedRouterList];
+      // // 在菜单展示全部路由
+      // this.routers = [...homepageRouterList, ...accessedRouters, ...fixedRouterList];
       // 在菜单只展示动态路由和首页
-      // this.routers = [...homepageRouterList, ...accessedRouters];
+      this.routers = [...homepageRouterList, ...accessedRouters];
       // 在菜单只展示动态路由
       // this.routers = [...accessedRouters];
     },
@@ -29,6 +29,7 @@ export const usePermissionStore = defineStore('permission', {
       try {
         // 发起菜单权限请求 获取菜单列表
         const asyncRoutes: Array<RouteItem> = (await getMenuList()).list;
+        console.log('asyncRoutes', asyncRoutes);
         this.asyncRoutes = transformObjectToRoute(asyncRoutes);
         await this.initRoutes();
         return this.asyncRoutes;

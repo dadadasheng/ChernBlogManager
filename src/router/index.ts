@@ -9,7 +9,7 @@ const homepageModules = import.meta.glob('./modules/**/homepage.ts', { eager: tr
 
 // 导入modules非homepage相关固定路由
 const fixedModules = import.meta.glob('./modules/**/!(homepage).ts', { eager: true });
-
+console.log(fixedModules);
 // 其他固定路由
 const defaultRouterList: Array<RouteRecordRaw> = [
   {
@@ -37,6 +37,7 @@ export function mapModuleRouterList(modules: Record<string, unknown>): Array<Rou
     const modList = Array.isArray(mod) ? [...mod] : [mod];
     routerList.push(...modList);
   });
+  console.log('routerList', routerList);
   return routerList;
 }
 
