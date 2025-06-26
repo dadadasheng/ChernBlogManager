@@ -8,8 +8,9 @@ const env = import.meta.env.MODE || 'development';
 const homepageModules = import.meta.glob('./modules/**/homepage.ts', { eager: true });
 
 // 导入modules非homepage相关固定路由
-const fixedModules = import.meta.glob('./modules/**/!(homepage).ts', { eager: true });
-console.log(fixedModules);
+const fixedModules = import.meta.glob('./modules/**/user.ts', { eager: true });
+console.log('homepageModules', homepageModules);
+console.log('fixedModules', fixedModules);
 // 其他固定路由
 const defaultRouterList: Array<RouteRecordRaw> = [
   {
