@@ -90,7 +90,8 @@ watch(
 
 const onExpanded = (value: MenuValue[]) => {
   const currentOperationMenu = difference(expanded.value, value);
-  const allExpanded = union(value, expanded.value);
+  // Error allExpanded type.
+  const allExpanded: any = union(value, expanded.value);
   remove(allExpanded, (item) => currentOperationMenu.includes(item));
   expanded.value = allExpanded;
 };

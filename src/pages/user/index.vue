@@ -3,8 +3,8 @@
     <t-col :flex="3">
       <div class="user-left-greeting">
         <div>
-          Hi，Image
-          <span class="regular"> {{ t('pages.user.markDay') }}</span>
+          Hi，Chern
+          <span class="regular"> </span>
         </div>
         <img src="@/assets/assets-chernblog-logo.png" class="logo" />
       </div>
